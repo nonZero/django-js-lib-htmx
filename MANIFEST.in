@@ -1,0 +1,2 @@
+include LICENSE
+recursive-include js_lib_htmx/static *
