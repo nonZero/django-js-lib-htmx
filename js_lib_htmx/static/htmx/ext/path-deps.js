@@ -5,6 +5,9 @@
     var _root = this;
   
     function dependsOn(pathSpec, url) {
+        if (pathSpec === "ignore") {
+            return false;
+        }
         var dependencyPath = pathSpec.split("/");
         var urlPath = url.split("/");
         for (var i = 0; i < urlPath.length; i++) {
@@ -32,10 +35,10 @@
 
     htmx.defineExtension('path-deps', {
         onEvent: function (name, evt) {
-            if (name === "htmx:afterRequest") {
+            if (name === "htmx:beforeOnLoad") {
                 var config = evt.detail.requestConfig;
                 // mutating call
-                if (config.verb !== "get") {
+                if (config.verb !== "get" && evt.target.getAttribute('path-deps') !== 'ignore') {
                     refreshPath(config.path);
                 }
             } 

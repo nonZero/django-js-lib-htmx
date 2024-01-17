@@ -1,0 +1,15 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "django-js-lib-htmx"
+authors = []
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: Zero-Clause BSD (0BSD)"]
+readme = "README.md"
+dynamic = ["version", "description"]
+
+
+[tool.flit.module]
+name = "js_lib_htmx"
